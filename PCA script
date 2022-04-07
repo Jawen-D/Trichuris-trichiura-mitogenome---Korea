@@ -1,0 +1,27 @@
+PCA script
+
+R studio script
+#Data
+Mitogenome <- c("TtmtK1", "TtmtK2", "TtmtK3", "AP-Japan", "NC-China", "KT-Uganda")
+AP017704 <- c(95.2, 93.48, 93.47, 100.0, 93.02, 81.70)
+NC_017750 <- c(93.30, 98.34, 98.29, 93.02, 100.0, 81.46)
+KT449826 <- c(83.59, 82.51, 82.15, 81.70, 81.46, 100.0)
+T_PCA <- data.frame(Mitogenome,AP017704,NC_017750,KT449826)
+head(T_PCA)
+summary(T_PCA)
+
+# PCA
+myPR <- prcomp(T_PCA[, -1], scale = TRUE)
+summary(myPR)
+
+# Extract PC scores
+str(myPR)
+myPR$x
+TT <- cbind(T_PCA, myPR$x[,1:2])
+head(TT)
+
+# Plot with ggplot
+library(ggplot2)
+ggplot(TT, aes(PC1, PC2, col = Mitogenome, fill = Mitogenome)) 
++ stat_ellipse(geom = "polygon", col = "black", alpha = 0.5) 
++ geom_point(size = 10, shape = 22, col = "black", stroke = 0.75)
