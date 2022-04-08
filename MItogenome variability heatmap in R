@@ -1,0 +1,56 @@
+Mitogenome variability heatmap script in R
+>use these scripts to produce a heatmap showing the mitogenome variability 
+
+#upload csv file of dataset : complete mitogenome variability
+View(complete)
+x <- read.csv("complete2.csv", row.names = 1)
+y <- data.matrix(x)
+
+#set color palette
+my_palette <- colorRampPalette(c("yellow", "red"))(n = 50)
+
+#create heatmap
+heatmap.2(y, main = "Complete mitogenome", trace = "none",
+          density.info=c("none"),
+          margins = c(5,5), 
+          labRow = NULL,
+          notecex = 1.0,
+          notecol = "black",
+          keysize = 1.5,
+          col =my_palette, dendrogram = c("row"))
+
+# upload csv file of dataset : cox1 mitogenome variability
+View(cox1)
+x <- read.csv("cox11.csv", row.names = 1)
+y <- data.matrix(x)
+
+#set color palette
+my_palette <- colorRampPalette(c("yellow", "red"))(n = 50)
+
+#create heatmap
+heatmap.2(y, main = "cox1", trace = "none",
+          density.info=c("none"),
+          margins = c(5,5), 
+          labRow = NULL,
+          notecex = 1.0,
+          notecol = "black",
+          keysize = 1.5,
+          col =my_palette, dendrogram = c("row"))
+
+# upload csv file of dataset : ITS2 mitogenome variability
+View(ITS2)
+x <- read.csv("ITS22.csv", row.names = 1)
+y <- data.matrix(x)
+
+#set color palette
+my_palette <- colorRampPalette(c("yellow", "red"))(n = 50)
+
+#create heatmap
+heatmap.2(y, main = "ITS2", trace = "none",
+          density.info=c("none"),
+          margins = c(5,5), 
+          labRow = NULL,
+          notecex = 1.0,
+          notecol = "black",
+          keysize = 1.5,
+          col =my_palette, dendrogram = c("row"))
